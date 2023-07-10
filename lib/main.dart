@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_first_project/questao.dart';
 
 main() => runApp(const PerguntaApp());
 
@@ -25,7 +26,7 @@ class PerguntaAppState extends State<PerguntaApp> {
             appBar: AppBar(title: const Text("Perguntas")),
             body: Column(
               children: [
-                Text(perguntas[_perguntaSelecionada]),
+                Questao(texto: perguntas[_perguntaSelecionada]),
                 ElevatedButton(
                     onPressed: responder, child: const Text("Resposta 1")),
                 ElevatedButton(
