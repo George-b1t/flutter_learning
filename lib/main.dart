@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 main() => runApp(const PerguntaApp());
 
 class PerguntaAppState extends State<PerguntaApp> {
-  var perguntaSelecionada = 0;
+  var _perguntaSelecionada = 0;
 
   void responder() {
-    if (perguntaSelecionada == 1) return;
+    if (_perguntaSelecionada == 1) return;
 
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     });
   }
 
@@ -25,7 +25,7 @@ class PerguntaAppState extends State<PerguntaApp> {
             appBar: AppBar(title: const Text("Perguntas")),
             body: Column(
               children: [
-                Text(perguntas[perguntaSelecionada]),
+                Text(perguntas[_perguntaSelecionada]),
                 ElevatedButton(
                     onPressed: responder, child: const Text("Resposta 1")),
                 ElevatedButton(
