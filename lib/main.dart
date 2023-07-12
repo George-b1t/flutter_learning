@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_first_project/questao.dart';
+import 'package:udemy_first_project/resposta.dart';
 
 main() => runApp(const PerguntaApp());
 
@@ -22,19 +23,26 @@ class PerguntaAppState extends State<PerguntaApp> {
     ];
 
     return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(title: const Text("Perguntas")),
-            body: Column(
-              children: [
-                Questao(texto: perguntas[_perguntaSelecionada]),
-                ElevatedButton(
-                    onPressed: responder, child: const Text("Resposta 1")),
-                ElevatedButton(
-                    onPressed: responder, child: const Text("Resposta 2")),
-                ElevatedButton(
-                    onPressed: responder, child: const Text("Resposta 3"))
-              ],
-            )));
+      home: Scaffold(
+        appBar: AppBar(title: const Text("Perguntas")),
+        body: Column(
+          children: [
+            Questao(
+              texto: perguntas[_perguntaSelecionada],
+            ),
+            const Resposta(
+              texto: "Resposta 1",
+            ),
+            const Resposta(
+              texto: "Resposta 2",
+            ),
+            const Resposta(
+              texto: "Resposta 3",
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
