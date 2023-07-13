@@ -8,7 +8,7 @@ class PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
 
   void responder() {
-    if (_perguntaSelecionada == 1) return;
+    if (_perguntaSelecionada == 2) return;
 
     setState(() {
       _perguntaSelecionada++;
@@ -17,10 +17,22 @@ class PerguntaAppState extends State<PerguntaApp> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> perguntas = [
-      "Qual é a sua cor favorita?",
-      "Qual é o seu animal favorito?"
+    final List perguntas = [
+      {
+        'texto': 'Qual é a sua cor favorita?',
+        'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco']
+      },
+      {
+        'texto': 'Qual o seu animal favorito?',
+        'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão']
+      },
+      {
+        'texto': 'Qual o seu instrutor favorito?',
+        'respostas': ['Maria', 'João', 'Leo', 'Pedro']
+      }
     ];
+
+    List<String> respostas = perguntas[_perguntaSelecionada]['respostas'];
 
     return MaterialApp(
       home: Scaffold(
@@ -28,17 +40,12 @@ class PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             Questao(
-              texto: perguntas[_perguntaSelecionada],
+              texto: perguntas[_perguntaSelecionada]['texto'],
             ),
-            const Resposta(
-              texto: "Resposta 1",
-            ),
-            const Resposta(
-              texto: "Resposta 2",
-            ),
-            const Resposta(
-              texto: "Resposta 3",
-            ),
+            ...respostas
+                .map((texto) =>
+                    Resposta(texto: texto, quandoSelecionado: responder))
+                .toList()
           ],
         ),
       ),
