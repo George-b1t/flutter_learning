@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 
 class Resultado extends StatelessWidget {
-  const Resultado({super.key});
+  final int pontuacao;
+
+  const Resultado({super.key, required this.pontuacao});
+
+  String get fraseResultado {
+    if (pontuacao < 8) {
+      return "Parabéns!";
+    } else if (pontuacao < 12) {
+      return "Você é bom!";
+    } else if (pontuacao < 16) {
+      return "Impressionante!";
+    } else {
+      return "Nível Jedi!";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Text(
-        "Parabéns!",
-        style: TextStyle(
+        fraseResultado,
+        style: const TextStyle(
           fontSize: 28,
         ),
       ),
